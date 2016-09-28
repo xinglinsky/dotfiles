@@ -6,7 +6,7 @@ set softtabstop=4
 set tabstop=4
 set nobackup
 set number
-set autochdir
+set autochdir	
 set history=1000
 set smartindent
 set cursorline
@@ -18,9 +18,9 @@ language messages zh_CN.utf-8
 
 
 "Vundle path
-set rtp+=$VIM/vim74/bundle/Vundle.vim
+set rtp+=$VIM/vimfiles/bundle/Vundle.vim
 "Plugin path
-call vundle#begin('$VIM/vim74/bundle/')
+call vundle#begin('$VIM/vimfiles/bundle/')
  
 "Plugin
 Plugin 'gmarik/Vundle.vim'
@@ -35,9 +35,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-powerline'
 
-call vundle#end()
-filetype plugin indent on
+call vundle#end() 
 
+filetype plugin indent on
 colorscheme monokai
 
 "tags
