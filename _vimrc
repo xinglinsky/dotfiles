@@ -11,6 +11,8 @@ set history=1000
 set smartindent
 set cursorline
 set hlsearch
+set nobackup
+set nowritebackup
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,utf-16,big5,euc-jp,latin1  
