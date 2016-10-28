@@ -38,7 +38,7 @@ Plugin 'Lokaltog/vim-powerline'
 call vundle#end() 
 
 filetype plugin indent on
-colorscheme monokai
+colorscheme molokai
 
 "tags
 let Tlist_Ctags_Cmd = 'C:\Program Files\Vim\ctags58\ctags.exe'
@@ -90,7 +90,7 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
  let g:Powerline_symbols = 'fancy'
  "}
 
-execute pathogen#infect() 
+"/execute pathogen#infect() 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
