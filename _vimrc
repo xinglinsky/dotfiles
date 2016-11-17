@@ -20,12 +20,12 @@ language messages zh_CN.utf-8
 
 
 "Vundle path
-set rtp+=$VIM/vimfiles/bundle/Vundle.vim
+set rtp+=$VIM/vimfiles/bundle/vundle
 "Plugin path
 call vundle#begin('$VIM/vimfiles/bundle/')
  
 "Plugin
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/vundle'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'L9'
@@ -34,7 +34,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp'
 Plugin 'Lokaltog/vim-powerline'
 
 call vundle#end() 
