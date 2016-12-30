@@ -28,35 +28,25 @@ call vundle#begin('$VIM/vimfiles/bundle/')
 Plugin 'gmarik/vundle'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
-Plugin 'L9'
 Plugin 'fatih/vim-go'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp'
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'majutsushi/tagbar' 
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end() 
 
 filetype plugin indent on
 colorscheme molokai
 
-"tags
-let Tlist_Ctags_Cmd = 'C:\Program Files\Vim\ctags58\ctags.exe'
-set tags=C:\Program\ Files\Vim\ctags58\tags
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_Use_Right_Window=1 
-let Tlist_Show_Menu=1
-
-"taglist
-let Tlist_Show_One_File=1  
-let Tlist_Exit_OnlyWindow=1
-
-"WinManager
-let g:AutoOpenWinManager = 1
-let g:winManagerWidth = 30
-let g:winManagerWindowLayout = "TagList|FileExplorer,BufExplorer"
+"tagbar
+let g:tagbar_ctags_bin='D:\IDE\Vim\vimfiles\plugin\ctags' 
+let g:tagbar_width=30 
 
 "NERDTree{
 let g:NERDTree_title = "[NERDTree]"
@@ -85,45 +75,34 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
   "\ }
 "}
 
-"powerline{
- set guifont=PowerlineSymbols\ for\ Powerline
- set nocompatible
- set t_Co=256
- let g:Powerline_symbols = 'fancy'
- "}
-
-"/execute pathogen#infect() 
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
 
 set diffexpr=MyDiff()
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      if empty(&shellxquote)
-        let l:shxq_sav = ''
-        set shellxquote&
-      endif
-      let cmd = '"' . $VIMRUNTIME . '\diff"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
-  if exists('l:shxq_sav')
-    let &shellxquote=l:shxq_sav
-  endif
-endfunction
+"function MyDiff()
+  "let opt = '-a --binary '
+  "if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  "if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  "let arg1 = v:fname_in
+  "if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  "let arg2 = v:fname_new
+  "if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  "let arg3 = v:fname_out
+  "if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  "if $VIMRUNTIME =~ ' '
+    "if &sh =~ '\<cmd'
+      "if empty(&shellxquote)
+        "let l:shxq_sav = ''
+        "set shellxquote&
+      "endif
+      "let cmd = '"' . $VIMRUNTIME . '\diff"'
+    "else
+      "let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    "endif
+  "else
+    "let cmd = $VIMRUNTIME . '\diff'
+  "endif
+  "silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+  "if exists('l:shxq_sav')
+    "let &shellxquote=l:shxq_sav
+  "endif
+"endfunction
 
