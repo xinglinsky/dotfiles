@@ -28,8 +28,8 @@ set smartcase
 set showmatch  " When a bracket is inserted, briefly jump to the matching one
 
 " Spell
-set spell
-set spelllang=en
+"set spell
+"set spelllang=en
 
 "Others
 set nobackup
@@ -70,50 +70,91 @@ if (g:iswindows==1)
 	source $VIMRUNTIME/menu.vim
 endif
 
+"" ===============================================================================
+"" Vundle Configuration
+"" ===============================================================================
+"set nocompatible               " be improved, required
+"filetype off                   " required!
+""Vundle path
+"set rtp+=$VIM/vimfiles/bundle/vundle
+""Plugin path
+"call vundle#begin('$VIM/vimfiles/bundle/')  " required!
+
+""Plugin
+"Plugin 'gmarik/vundle'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'tpope/vim-surround'
+
+""go
+"Plugin 'fatih/vim-go'
+
+"Plugin 'jiangmiao/auto-pairs'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdtree'
+
+""Search
+"Plugin 'kien/ctrlp.vim'
+
+""markdown
+"Plugin 'plasticboy/vim-markdown'
+"Plugin 'iamcco/markdown-preview.vim'
+
+""Display
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'chriskempson/tomorrow-theme'
+"Plugin 'majutsushi/tagbar' 
+"Plugin 'altercation/vim-colors-solarized'
+
+""git
+"Plugin 'tpope/vim-fugitive'
+
+"call vundle#end()			" required!
+
+"filetype plugin indent on  " required!
+
 " ===============================================================================
-" Vundle Configuration
+" vim-plug Configuration
 " ===============================================================================
-set nocompatible               " be improved, required
-filetype off                   " required!
-"Vundle path
-set rtp+=$VIM/vimfiles/bundle/vundle
 "Plugin path
-call vundle#begin('$VIM/vimfiles/bundle/')  " required!
+call plug#begin('$VIM/vimfiles/bundle/')  " required!
 
 "Plugin
-Plugin 'gmarik/vundle'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'tpope/vim-surround'
+Plug 'gmarik/vundle'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-surround'
 
 "go
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 
 "Search
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 
 "markdown
-Plugin 'plasticboy/vim-markdown'
-Plugin 'iamcco/markdown-preview.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.vim'
 
 "Display
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'chriskempson/tomorrow-theme'
-Plugin 'majutsushi/tagbar' 
-Plugin 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/tomorrow-theme'
+Plug 'majutsushi/tagbar' 
+Plug 'altercation/vim-colors-solarized'
 
 "git
-Plugin 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+"Plug 'airblade/vim-gitgutter'
+"Plug 'tpope/vim-fugitive'
 
-call vundle#end()			" required!
-
-filetype plugin indent on  " required!
+call plug#end()			" required!
 
 "vim-colors-solarized
 syntax enable
@@ -122,9 +163,10 @@ colorscheme solarized
 
 "vim-airline
 let g:airline_theme='tomorrow'
+let g:solarized_italic=0
 
 "tagbar
-let g:tagbar_ctags_bin='D:\IDE\Vim\vimfiles\plugin\ctags' 
+let g:tagbar_ctags_bin='D:/IDE/Vim/vimfiles/plugin/ctags' 
 let g:tagbar_width=30 
 
 " NERDTree settings {{{
@@ -185,7 +227,7 @@ let g:ctrlp_custom_ignore = {
 \ }
 
 "markdown-preview{{{
-let g:mkdp_path_to_chrome = "google-chrome"
+let g:mkdp_path_to_chrome = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
 " path to the chrome or the command to open chrome(or other modern browsers)
 
 let g:mkdp_auto_start = 0
