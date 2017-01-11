@@ -126,12 +126,15 @@ Plug 'gmarik/vundle'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
+Plug 'ervandew/supertab'
+Plug 'easymotion/vim-easymotion'
 
 "go
 Plug 'fatih/vim-go'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/syntastic'
+Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 
