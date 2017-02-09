@@ -41,8 +41,8 @@ set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,utf-16,big5,e
 language messages zh_CN.utf-8
 
 "shortcut
-let mapleader=","
-let g:mapleader=","
+let mapleader="\<Space>"
+let g:mapleader="\<Space>"
 
 " whether is running GUI version
 if has("gui_running")
@@ -69,6 +69,15 @@ if (g:iswindows==1)
 	source $VIMRUNTIME/delmenu.vim
 	source $VIMRUNTIME/menu.vim
 endif
+if (g:isgui==1)
+	au GUIEnter * simalt ~x " Max window when running
+	set guioptions-=m " Hide menu
+	set guioptions-=T " Hide toolbar
+	set guioptions-=L " Hide left scrollbar
+	set guioptions-=r " Hide right scrollbar
+	"set guioptions-=b " Hide bottom scrollbar
+	"set showtabline=0 " Hide Tab line
+endif
 
 "" ===============================================================================
 "" Vundle Configuration
@@ -80,36 +89,7 @@ endif
 ""Plugin path
 "call vundle#begin('$VIM/vimfiles/bundle/')  " required!
 
-""Plugin
-"Plugin 'gmarik/vundle'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'SirVer/ultisnips'
-"Plugin 'tpope/vim-surround'
-
-""go
-"Plugin 'fatih/vim-go'
-
-"Plugin 'jiangmiao/auto-pairs'
-"Plugin 'scrooloose/syntastic'
-"Plugin 'scrooloose/nerdcommenter'
-"Plugin 'scrooloose/nerdtree'
-
-""Search
-"Plugin 'kien/ctrlp.vim'
-
-""markdown
-"Plugin 'plasticboy/vim-markdown'
-"Plugin 'iamcco/markdown-preview.vim'
-
-""Display
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'chriskempson/tomorrow-theme'
-"Plugin 'majutsushi/tagbar' 
-"Plugin 'altercation/vim-colors-solarized'
-
-""git
-"Plugin 'tpope/vim-fugitive'
+"...
 
 "call vundle#end()			" required!
 
@@ -122,8 +102,7 @@ endif
 call plug#begin('$VIM/vimfiles/bundle/')  " required!
 
 "Plugin
-Plug 'gmarik/vundle'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
@@ -133,13 +112,19 @@ Plug 'easymotion/vim-easymotion'
 Plug 'fatih/vim-go'
 
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 
+"lint
+Plug 'w0rp/ale'
+"Plug 'scrooloose/syntastic'
+
 "Search
 Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+"Plug 'junegunn/fzf'
+"Plug 'rking/ag.vim'
 
 "markdown
 Plug 'plasticboy/vim-markdown'
@@ -151,8 +136,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/tomorrow-theme'
 Plug 'majutsushi/tagbar' 
 Plug 'altercation/vim-colors-solarized'
+"Plug 'itchyny/calendar.vim'
 
-"git
+"version control
 Plug 'mhinz/vim-signify'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-fugitive'
@@ -209,7 +195,7 @@ let NERDTreeMouseMode=2
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
             \ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
 
-" }}}
+"}}}
 
 "ctrlp
 let g:ctrlp_map = '<c-p>'
@@ -254,3 +240,30 @@ let g:mkdp_command_for_global = 0
 " set to 1, the MarkdownPreview command can be use for all files,
 " by default it just can be use in markdown file
 "}}}
+
+
+"YCM
+let g:ycm_global_ycm_extra_conf='$VIM/vimfiles/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_python_binary_path = 'D:/Python27'
+
+""Calendar
+"let g:calendar_diary="C:/Users/N3495/Documents/daily"
+
+" ===============================================================================
+" key map Configuration
+" ===============================================================================
+" Fast saving
+nnoremap <Leader>w :w<CR>
+" write and quit 
+nnoremap <leader>q :wq<CR>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<CR>
+map <leader>to :tabonly<CR>
+map <leader>tc :tabclose<CR>
+map <leader>tm :tabmove
+
+" source .vimrc
+nnoremap <leader>sv :source $MYVIMRC<CR>
+" edit .vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>

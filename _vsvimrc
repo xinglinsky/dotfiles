@@ -9,8 +9,8 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -235,9 +235,6 @@ map <leader>s? z=
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-
-" Append by wfyaibaib
-" echo ">^.^<"
 " source .vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " edit .vimrc
@@ -251,9 +248,6 @@ nnoremap <leader>q :wq<cr>
 nnoremap <leader>w :w<cr>
 " forget <esc>
 " inoremap <esc> <nop>
-" open a line, nomorl mode
-nnoremap <leader>o o<esc>
-nnoremap <leader>O O<esc>
 
 " comment lines
 " Commenting blocks of code.
