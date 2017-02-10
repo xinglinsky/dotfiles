@@ -37,6 +37,7 @@ set nowritebackup
 set cursorline
 set history=1000
 set encoding=utf-8
+set termencoding=utf-8
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,utf-16,big5,euc-jp,latin1  
 language messages zh_CN.utf-8
 
@@ -117,14 +118,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 
 "lint
-Plug 'w0rp/ale'
-"Plug 'scrooloose/syntastic'
+"Plug 'w0rp/ale'
+Plug 'scrooloose/syntastic'
 
 "Search
 Plug 'kien/ctrlp.vim'
-Plug 'mileszs/ack.vim'
+"Plug 'mileszs/ack.vim'
 "Plug 'junegunn/fzf'
-"Plug 'rking/ag.vim'
+Plug 'rking/ag.vim'
 
 "markdown
 Plug 'plasticboy/vim-markdown'
@@ -169,7 +170,7 @@ let g:tagbar_width=30
 "endfunction 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
-nnoremap <leader>N :NERDTreeClose<CR>
+nnoremap <leader>N :NERDTreeClose<C=R>
 
 " Store the bookmarks file
 let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
@@ -197,7 +198,7 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
 
 "}}}
 
-"ctrlp
+"ctrlp }}}
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -214,31 +215,44 @@ let g:ctrlp_custom_ignore = {
 \ 'file': '\v\.(exe|so|dll)$',
 \ 'link': 'some_bad_symbolic_links',
 \ }
+"}}}
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  "let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+		  "\ --ignore .git
+		  "\ --ignore .svn
+		  "\ --ignore .hg
+		  "\ --ignore .DS_Store
+		  "\ --ignore "**/*.pyc"
+		  "\ -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 "markdown-preview{{{
 let g:mkdp_path_to_chrome = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
 " path to the chrome or the command to open chrome(or other modern browsers)
 
 let g:mkdp_auto_start = 0
-" set to 1, the vim will open the preview window once enter the markdown
-" buffer
+" set to 1, the vim will open the preview window once enter the markdown buffer
 
 let g:mkdp_auto_open = 0
-" set to 1, the vim will auto open preview window when you edit the
-" markdown file
+" set to 1, the vim will auto open preview window when you edit the markdown file
 
 let g:mkdp_auto_close = 1
-" set to 1, the vim will auto close current preview window when change
-" from markdown buffer to another buffer
+" set to 1, the vim will auto close current preview window when change from markdown buffer to another buffer
 
 let g:mkdp_refresh_slow = 0
-" set to 1, the vim will just refresh markdown when save the buffer or
-" leave from insert mode, default 0 is auto refresh markdown as you edit or
-" move the cursor
+" set to 1, the vim will just refresh markdown when save the buffer or leave from insert mode, default 0 is auto refresh markdown as you edit or move the cursor
 
 let g:mkdp_command_for_global = 0
-" set to 1, the MarkdownPreview command can be use for all files,
-" by default it just can be use in markdown file
+" set to 1, the MarkdownPreview command can be use for all files, by default it just can be use in markdown file
 "}}}
 
 
@@ -246,12 +260,15 @@ let g:mkdp_command_for_global = 0
 let g:ycm_global_ycm_extra_conf='$VIM/vimfiles/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_python_binary_path = 'D:/Python27'
 
+
 ""Calendar
 "let g:calendar_diary="C:/Users/N3495/Documents/daily"
+
 
 " ===============================================================================
 " key map Configuration
 " ===============================================================================
+
 " Fast saving
 nnoremap <Leader>w :w<CR>
 " write and quit 
@@ -267,3 +284,8 @@ map <leader>tm :tabmove
 nnoremap <leader>sv :source $MYVIMRC<CR>
 " edit .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+
+
+" ===============================================================================
+" key map Configuration
+" ===============================================================================
