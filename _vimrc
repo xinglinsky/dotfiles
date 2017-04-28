@@ -112,6 +112,9 @@ Plug 'easymotion/vim-easymotion'
 "go
 Plug 'fatih/vim-go'
 
+"python
+Plug 'klen/python-mode'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdcommenter'
@@ -162,15 +165,15 @@ let g:tagbar_width=30
 " NERDTree settings {{{
 "let g:NERDTree_title = "[NERDTree]"
 "function! NERDTree_Start()  
-	"exec 'NERDTree'  
+"exec 'NERDTree'  
 "endfunction  
 
 "function! NERDTree_IsValid()  
-	"return 1  
+"return 1  
 "endfunction 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
-nnoremap <leader>N :NERDTreeClose<C=R>
+nnoremap <leader>N :NERDTreeClose<CR>
 
 " Store the bookmarks file
 let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
@@ -194,7 +197,7 @@ let NERDTreeMouseMode=2
 
 " Don't display these kinds of files
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
-            \ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
+			\ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
 
 "}}}
 
@@ -211,28 +214,28 @@ else
 endif
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-\ 'file': '\v\.(exe|so|dll)$',
-\ 'link': 'some_bad_symbolic_links',
-\ }
+			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+			\ 'file': '\v\.(exe|so|dll)$',
+			\ 'link': 'some_bad_symbolic_links',
+			\ }
 "}}}
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+	" Use Ag over Grep
+	set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  "let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-		  "\ --ignore .git
-		  "\ --ignore .svn
-		  "\ --ignore .hg
-		  "\ --ignore .DS_Store
-		  "\ --ignore "**/*.pyc"
-		  "\ -g ""'
+	" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+	"let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+	"let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+	"\ --ignore .git
+	"\ --ignore .svn
+	"\ --ignore .hg
+	"\ --ignore .DS_Store
+	"\ --ignore "**/*.pyc"
+	"\ -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+	" ag is fast enough that CtrlP doesn't need to cache
+	let g:ctrlp_use_caching = 0
 endif
 
 "markdown-preview{{{
@@ -289,3 +292,13 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " ===============================================================================
 " key map Configuration
 " ===============================================================================
+autocmd VimEnter * call LoadSession()
+autocmd VimLeave * call SaveSession()
+function! SaveSession()
+	execute 'mksession! $HOME/.vim/sessions/session.vim'
+endfunction
+function! LoadSession()
+	if argc() == 0
+		execute 'source $HOME/.vim/sessions/session.vim'
+	endif
+endfunction

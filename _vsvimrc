@@ -12,9 +12,6 @@ set autoread
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
-" Fast saving
-nmap <leader>w :w!<cr>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -135,21 +132,23 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+"map j gj
+"map k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+"map <space> /
+"map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+map <leader>gt :vsc Window.NextTab<cr>
+map <leader>gT :vsc Window.PreviousTab<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -158,10 +157,14 @@ map <leader>bd :Bclose<cr>
 map <leader>ba :1,1000 bd!<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
+"map <leader>tn :tabnew<cr>
+"map <leader>to :tabonly<cr>
+"map <leader>tc :tabclose<cr>
+"map <leader>tm :tabmove
+
+" Move tab between window
+"map <leader>mn Window.MovetoNextTabGroup
+"map <leader>mp Window.MovetoPreviousTabGroup
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -190,10 +193,10 @@ map 0 ^
 vnoremap <silent> gv :call VisualSelection('gv')<CR>
 
 " Open vimgrep and put the cursor in the right position
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
+"map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
 
 " Vimgreps in the current file
-map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
+"map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
@@ -233,21 +236,23 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+"map <leader>pp :setlocal paste!<cr>
 
 " source .vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " edit .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-" use ,, change to mormal model
-inoremap <leader>, <esc>
-vnoremap <leader>, <esc>
 " write and quit 
+" Fast saving
 nnoremap <leader>q :wq<cr>
+nnoremap <leader>e :q!<cr>
 " write 
 nnoremap <leader>w :w<cr>
 " forget <esc>
 " inoremap <esc> <nop>
+" open a line, nomorl mode
+nnoremap <leader>o o<esc>
+nnoremap <leader>O O<esc>
 
 " comment lines
 " Commenting blocks of code.
@@ -272,5 +277,4 @@ nnoremap <leader>r :reg<cr>
 " vs binding
 " Viewe findresults
 nnoremap <leader>vf :vsc View.FindResults1<cr>
-"
-imap ,, <esc>
+nnoremap <leader>vo :vsc View.Output<cr>
