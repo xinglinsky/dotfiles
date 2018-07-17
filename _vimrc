@@ -159,7 +159,7 @@ let g:airline_theme='tomorrow'
 let g:solarized_italic=0
 
 "tagbar
-let g:tagbar_ctags_bin='D:/IDE/Vim/vimfiles/plugin/ctags' 
+let g:tagbar_ctags_bin='$VIM/vimfiles/plugin/ctags' 
 let g:tagbar_width=30 
 
 " NERDTree settings {{{
@@ -265,7 +265,7 @@ let g:ycm_python_binary_path = 'D:/Python27'
 
 
 ""Calendar
-"let g:calendar_diary="C:/Users/N3495/Documents/daily"
+"let g:calendar_diary="$HOME/daily"
 
 
 " ===============================================================================
